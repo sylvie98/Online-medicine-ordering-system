@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TextField, Button, Container, Typography, Paper, Alert } from '@mui/material';
+import { TextField, Button, Container, Typography, Paper, Alert,MenuItem,Select,InputLabel,FormControl } from '@mui/material';
 
 const LoginForm = () => {
   const [userData, setUserData] = useState({
@@ -66,7 +66,7 @@ const LoginForm = () => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Paper elevation={3} style={{ padding: "20px", marginTop: "50px" }}>
+      <Paper elevation={3} style={{ padding: "20px", marginTop: "90px",marginBottom:'50%' }}>
         <Typography variant="h4" align="center" gutterBottom>
           Login
         </Typography>
@@ -94,23 +94,23 @@ const LoginForm = () => {
             value={userData.password}
             onChange={handleChange}
           />
-             <TextField
-            fullWidth
-            label="Role"
-            variant="outlined"
-            margin="normal"
-            required
-            name="role"
-            type="text"
-            value={userData.role}
-            onChange={handleChange}
-          />
+           <FormControl fullWidth margin="normal">
+            <InputLabel>Role</InputLabel>
+            <Select
+              name="role"
+              value={userData.role}
+              onChange={handleChange}
+              required
+            >
+              <MenuItem value="admin">Admin</MenuItem>
+              <MenuItem value="user">User</MenuItem>
+            </Select>
+          </FormControl>
           <Button
             fullWidth
             variant="contained"
-            color="primary"
             type="submit"
-            style={{ marginTop: "20px" }}
+            sx={{ marginTop: "20px",backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' } }}
           >
             Login
           </Button>

@@ -16,6 +16,9 @@ import { MedicineProvider } from './pages/Admin/MedicineContext';
 import AdminLayout from '../src/pages/Admin/AdminLayout';
 import Order from './pages/Order/Order';
 import Footer from './Component/Footer';
+import Medicine from './pages/Medicine/Medicine';
+import About from './pages/About/About';
+import Contact from './pages/Contact/Contact';
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
           <Navabar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/medicine" element={<Medicine />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/cart" element={<Cart />} />
             <Route path='/order' element={<Order/>}/>
@@ -32,7 +38,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<Admin />} />
-              {/* <Route path='/admin' element={<Admin/>}/> */}
               <Route path="add" element={<Add />} />
               <Route path="view/:id" element={<View />} />
               <Route path="update/:id" element={<Update />} />

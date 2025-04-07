@@ -1,15 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  CardMedia,
-  IconButton,
-  Button,
-  Box,
-} from "@mui/material";
+import {Container,Typography,Grid,Card,CardContent,CardMedia,IconButton,Button,Box} from "@mui/material";
 import { Add, Remove, Delete } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
@@ -57,7 +47,7 @@ function Cart() {
   };
 
   return (
-    <Container sx={{ pt: 10 }}>
+    <Container sx={{ pt: 10 ,marginBottom:'15%'}}>
       <Typography variant="h4" gutterBottom>
         Your Cart
       </Typography>
@@ -68,7 +58,7 @@ function Cart() {
         <Grid container spacing={2}>
           {cart.map(item => (
             <Grid item xs={12} key={item.id}>
-              <Card sx={{ display: "flex", alignItems: "center", p: 2 }}>
+              <Card sx={{ display: "flex", alignItems: "center", p: 2 ,background:'#f0f3f4 '}}>
                 <CardMedia
                   component="img"
                   image={item.image}
@@ -109,8 +99,7 @@ function Cart() {
             </Typography>
             <Button
               variant="contained"
-              color="success"
-              sx={{ mt: 2 }}
+              sx={{ mt: 2 ,backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' }}}
               onClick={handlePlaceOrder}
             >
               Place Order

@@ -47,9 +47,8 @@ function Catalog() {
                 <Link to={"/cart"}>
                 <Button
                   variant="contained"
-                  color="primary"
                   onClick={() => handleAddToCart(med)}
-                  sx={{ mt: 1 }}
+                  sx={{ mt: 1,backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' }  }}
                 >
                   Add to Cart
                 </Button>

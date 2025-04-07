@@ -50,6 +50,13 @@ function Order() {
     navigate("/catalog");
   };
 
+  const handleCancelOrder = () => {
+    // Clear the cart from localStorage and update the state
+    localStorage.removeItem('cart');
+    setCart([]);
+    navigate("/catalog");  // Redirect to the catalog page
+  };
+
   return (
     <Container sx={{ pt: 10 }}>
       <Typography variant="h4" gutterBottom>
@@ -95,9 +102,20 @@ function Order() {
             </Grid>
           ))}
         </Grid>
-
-        <Button variant="contained" color="primary" sx={{ width: '200px' }} onClick={handleSubmit}>
+        <Button
+          variant="contained"
+          sx={{ width: '200px', backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' }, marginTop: 2 }}
+          onClick={handleSubmit}
+        >
           Confirm Order
+        </Button>
+
+        <Button
+          variant="outlined"
+          sx={{ width: '200px', color:'white' , backgroundColor: '#17202a', '&:hover': { backgroundColor: '#05599d' }, marginTop: 2 }}
+          onClick={handleCancelOrder}
+        >
+          Cancel Order
         </Button>
       </Box>
     </Container>

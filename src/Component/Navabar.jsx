@@ -5,9 +5,12 @@ import { Link } from "react-router-dom";
 import DrawerComp from './DrawerComp';
 const PAGES=[
   { name: "Home", path: "/" },
-  { name: "Catalog", path: "/catalog" },
-  {name:"Cart", path:"/cart"},
-  { name: "Admin", path: "/admin" }
+  { name: "Medicine", path: "/medicine" },
+  { name: "About", path: "/about" },
+  { name: "Contact Us", path: "/contact" },
+  // { name: "Catalog", path: "/catalog" },
+  // {name:"Cart", path:"/cart"},
+  // { name: "Admin", path: "/admin" }
 ];
 const Navabar = () => {
   const [value, setValue]=useState();
@@ -38,8 +41,8 @@ const Navabar = () => {
                     ))
                   }
             </Tabs>
-            <Button sx={{marginLeft:"auto",background:"#8B0000"}} variant='contained' component={Link} to="/login">Login</Button>
-            <Button sx={{marginLeft:"15px",background:"#8B0000"}} variant="contained" component={Link} to="/register">Register</Button>
+            <Button sx={{marginLeft:"auto",background:"white",color:'#063970','&:hover': { backgroundColor: '#e74c3c ' }}} variant='contained' component={Link} to="/login">Login</Button>
+            <Button sx={{marginLeft:"15px",background:"white",color:'#063970','&:hover': { backgroundColor: '#e74c3c ' }}} variant="contained" component={Link} to="/register">Register</Button>
                 </>
               )
             }

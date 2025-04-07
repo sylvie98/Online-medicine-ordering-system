@@ -1,18 +1,5 @@
 import React, { useState } from "react";
-import './reg.css';
-import {
-  Container,
-  TextField,
-  Button,
-  Typography,
-  MenuItem,
-  Select,
-  InputLabel,
-  FormControl,
-  Paper,
-  Alert
-} from "@mui/material";
-
+import { Container, TextField, Button,Typography,MenuItem,Select,InputLabel,FormControl,Paper,Alert} from "@mui/material";
 const Register = () => {
   const [userData, setUserData] = useState({
     name: "",
@@ -153,9 +140,8 @@ const Register = () => {
           <Button 
             fullWidth
             variant="contained"
-            color="primary"
             type="submit"
-            style={{ marginTop: "20px" }} 
+            sx={{ marginTop: "20px" ,backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' }}} 
           >
             Register
           </Button>
