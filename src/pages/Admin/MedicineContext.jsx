@@ -7,8 +7,8 @@ export const MedicineContext = createContext();
 export const MedicineProvider = ({ children }) => {
   // Initial state for medicines
   const [medicines, setMedicines] = useState([
-    { id: 1, name: 'Paracetamol', price: '$5' },
-    { id: 2, name: 'Ibuprofen', price: '$8' },
+    { id: 1, name: 'Paracetamol', price: '500' },
+    { id: 2, name: 'Ibuprofen', price: '1000' },
   ]);
 
   // Function to add a new medicine

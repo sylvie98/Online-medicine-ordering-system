@@ -10,7 +10,6 @@ import Cart from './pages/Cart/Cart';
 import Add from './pages/Admin/Add';
 import View from './pages/Admin/View';
 import Update from './pages/Admin/Update';
-import Chart from './pages/Admin/ChartComponent';
 import Clients from './pages/Admin/Clients';
 import { MedicineProvider } from './pages/Admin/MedicineContext';
 import AdminLayout from '../src/pages/Admin/AdminLayout';
@@ -19,6 +18,8 @@ import Footer from './Component/Footer';
 import Medicine from './pages/Medicine/Medicine';
 import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
+import OrderTrends from './pages/Admin/OrderTrends';
+import PopularMedicines from './pages/Admin/PopularMedicines';
 
 function App() {
   return (
@@ -41,8 +42,8 @@ function App() {
               <Route path="add" element={<Add />} />
               <Route path="view/:id" element={<View />} />
               <Route path="update/:id" element={<Update />} />
-              <Route path="chartComponent" element={<Chart />} />
-              <Route path="chartLevel" element={<Chart />} />
+              <Route path="orderTrends" element={<OrderTrends />} />
+              <Route path="popularMedicine" element={<PopularMedicines />} />
               <Route path="clients" element={<Clients />} />
               
             </Route>

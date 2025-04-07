@@ -19,11 +19,11 @@ const Sidebar = () => (
       <ListItem button component={Link} to="/admin/clients">
         <ListItemText primary="Clients" />
       </ListItem>
-      <ListItem button component={Link} to="/admin/chartComponent">
-        <ListItemText primary="Chart" />
+      <ListItem button component={Link} to="/admin/orderTrends">
+        <ListItemText primary="OrderTrends" />
       </ListItem>
-      <ListItem button component={Link} to="/admin/chartlevel">
-        <ListItemText primary="Client level" />
+      <ListItem button component={Link} to="/admin/popularMedicine">
+        <ListItemText primary="popularMedicine" />
       </ListItem>
     </List>
   </Drawer>

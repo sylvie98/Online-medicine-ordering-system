@@ -17,7 +17,7 @@ function Add() {
   };
 
   return (
-    <div style={{ padding: '20px' , marginTop:'80px',marginLeft: '30%', width: '55%'}}>
+    <div style={{ padding: '20px' , marginTop:'80px',marginLeft: '30%', width: '55%' ,marginBottom:'14%'}}>
       <Typography variant="h4" gutterBottom>
         Add New Medicine
       </Typography>
@@ -35,7 +35,7 @@ function Add() {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
-      <Button variant="contained" color="primary" onClick={handleSubmit}>
+      <Button variant="contained" sx={{backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' }}} onClick={handleSubmit}>
         Add Medicine
       </Button>
     </div>

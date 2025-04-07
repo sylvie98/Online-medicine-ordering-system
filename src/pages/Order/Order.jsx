@@ -112,7 +112,7 @@ function Order() {
 
         <Button
           variant="outlined"
-          sx={{ width: '200px', color:'white' , backgroundColor: '#17202a', '&:hover': { backgroundColor: '#05599d' }, marginTop: 2 }}
+          sx={{ width: '200px', color:'white', backgroundColor: '#17202a', '&:hover': { backgroundColor: '#05599d' }, marginTop: 2 }}
           onClick={handleCancelOrder}
         >
           Cancel Order

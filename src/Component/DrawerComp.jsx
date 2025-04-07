@@ -5,11 +5,15 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 const PAGES=[
   { name: "Home", path: "/" },
-  { name: "Catalog", path: "/catalog" },
-  {name:"Cart", path:"/cart"},
-  { name: "Admin", path: "/admin" },
+  { name: "Medicine", path: "/medicine" },
+  { name: "About", path: "/about" },
+  { name: "Contact Us", path: "/contact" },
   { name: "Login", path: "/login" },
-  { name: "Logout", path: "/login" }
+  { name: "Register", path: "/register" },
+  // { name: "Catalog", path: "/catalog" },
+  // {name:"Cart", path:"/cart"},
+  // { name: "Admin", path: "/admin" },
+  // { name: "Logout", path: "/login" }
 ];
 const DrawerComp = () => {
   const [openDrawer,setOpenDrawer]= useState(false);

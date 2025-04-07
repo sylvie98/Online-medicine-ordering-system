@@ -30,7 +30,7 @@ function Update() {
   if (!medicine) return <Typography variant="h6">Medicine not found!</Typography>;
 
   return (
-    <div style={{ padding: '20px',marginTop:'80px',marginLeft: '30%', width: '55%' }}>
+    <div style={{ padding: '20px',marginTop:'80px',marginLeft: '30%', width: '55%',marginBottom:'14%' }}>
       <Typography variant="h4" gutterBottom>
         Update Medicine
       </Typography>
@@ -48,7 +48,7 @@ function Update() {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
-      <Button variant="contained" color="primary" onClick={handleSubmit}>
+      <Button variant="contained" sx={{backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' }}} onClick={handleSubmit}>
         Update Medicine
       </Button>
     </div>

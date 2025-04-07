@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, Paper, List, ListItem, ListItemText, Card, CardContent, CardMedia } from '@mui/material';
+import { Typography, Paper, Card, CardContent, CardMedia, Button, Box } from '@mui/material';
 
 const Clients = () => {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    // Retrieve orders from localStorage
+    loadClients();
+  }, []);
+
+  const loadClients = () => {
     const orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-    // Group orders by clientName
     const groupedClients = orders.reduce((acc, order) => {
       if (!acc[order.clientName]) {
         acc[order.clientName] = [];
@@ -17,7 +19,6 @@ const Clients = () => {
       return acc;
     }, {});
 
-    // Convert the grouped data into a list of client objects
     const clientList = Object.keys(groupedClients).map((clientName, index) => ({
       id: index + 1,
       name: clientName,
@@ -25,51 +26,58 @@ const Clients = () => {
     }));
 
     setClients(clientList);
-  }, []);
+  };
+
+  const handleDelete = (clientName) => {
+    const allOrders = JSON.parse(localStorage.getItem('orders')) || [];
+    const updatedOrders = allOrders.filter(order => order.clientName !== clientName);
+    localStorage.setItem('orders', JSON.stringify(updatedOrders));
+    loadClients();
+  };
 
   return (
-    <div style={{ padding: '20px', marginTop: '80px', marginLeft: '30%', width: '55%' }}>
-      <Typography variant="h4">Client List</Typography>
-      <Paper style={{ padding: '10px', marginTop: '10px' }}>
-        <List>
-          {clients.length === 0 ? (
-            <Typography>No clients found.</Typography>
-          ) : (
-            clients.map(client => (
-              <div key={client.id}>
-                <Typography variant="h6" style={{ marginBottom: '10px' }}>
-                  {client.name}
-                </Typography>
-                <ListItem>
-                  <ListItemText primary={`Phone: ${client.orders[0]?.phone || 'N/A'}`} />
-                  <ListItemText primary={`Email: ${client.orders[0]?.email || 'N/A'}`} />
-                </ListItem>
-
-                <Typography variant="h6" style={{ marginTop: '20px' }}>
-                  Products Ordered:
-                </Typography>
-                {client.orders.map((order, index) => (
-                  <Card key={index} style={{ marginBottom: '10px' }}>
+    <Box sx={{ padding: '20px', marginTop: '80px', marginLeft: '25%', marginRight: 'auto', width: '65%' }}>
+      <Typography variant="h4" gutterBottom textAlign="center">
+        Client Orders
+      </Typography>
+      <Paper sx={{ padding: '20px' }}>
+        {clients.map((client) => (
+          <Box key={client.id} sx={{ marginBottom: '20px' }}>
+            <Typography variant="h6">{client.name}</Typography>
+            {client.orders.map((order, index) => (
+              <Card sx={{ display: 'flex', marginTop: '10px', backgroundColor: '#f5f5f5' }} key={index}>
+                {order.products && order.products.length > 0 ? (
+                  <>
                     <CardMedia
                       component="img"
-                      height="160"
-                      image={order.productImage}
-                      alt={order.productName}
+                      sx={{ width: 170}}
+                      image={order.products[0].image}
+                      alt={order.products[0].name}
                     />
                     <CardContent>
-                      <Typography variant="subtitle1">{order.productName}</Typography>
-                      <Typography>
-                        {order.quantity} × {order.price} Frw
+                      <Typography variant="body1">Email: {order.clientEmail}</Typography>
+                      <Typography variant="body1">Phone: {order.clientPhone}</Typography>
+                      <Typography variant="body1">
+                        Products: {order.products.map((item) => `${item.name} (${item.quantity})`).join(', ')}
                       </Typography>
+                      <Button
+                        variant="contained" 
+                        onClick={() => handleDelete(client.name)}
+                        sx={{ mt: 2 ,backgroundColor: '#063970','&:hover': { backgroundColor: '#05599d' }}}
+                      >
+                        Delete Client Order
+                      </Button>
                     </CardContent>
-                  </Card>
-                ))}
-              </div>
-            ))
-          )}
-        </List>
+                  </>
+                ) : (
+                  <Typography>No products found for this order.</Typography>
+                )}
+              </Card>
+            ))}
+          </Box>
+        ))}
       </Paper>
-    </div>
+    </Box>
   );
 };
 

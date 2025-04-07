@@ -7,21 +7,16 @@ function Admin() {
   const { medicines, deleteMedicine } = useContext(MedicineContext);
 
   return (
-    <div style={{ padding: '20px', marginTop:'80px'}}>
+    <div style={{ padding: '20px', marginTop:'10%',marginBottom:'14%'}}>
       <Sidebar/>
-      <Link to="/admin/add">
-        <Button variant="contained" color="primary" style={{ margin: '10px  0 ',marginLeft: '30%'}}>
-          Add New Medicine
-        </Button>
-      </Link>
-      <TableContainer component={Paper} style={{ marginLeft: '30%', width: '55%'}}>
+      <TableContainer component={Paper} style={{ marginLeft: '25%', width: '65%'}}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Price</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell><strong>ID</strong></TableCell>
+              <TableCell><strong>Name</strong></TableCell>
+              <TableCell><strong>Price</strong></TableCell>
+              <TableCell><strong>Actions</strong></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -32,12 +27,12 @@ function Admin() {
                 <TableCell>{med.price}</TableCell>
                 <TableCell>
                   <Link to={`/admin/view/${med.id}`}>
-                    <Button variant="contained" color="primary" style={{ marginLeft: '10px' }}>
+                    <Button variant="contained" sx={{ marginLeft: '10px',backgroundColor:'#05599d','&:hover': { backgroundColor: '#063970' } }}>
                       View
                     </Button>
                   </Link>
                   <Link to={`/admin/update/${med.id}`}>
-                    <Button variant="contained" color="secondary" style={{ marginLeft: '10px' }}>
+                    <Button variant="contained" color="secondary" sx={{ marginLeft: '10px' }}>
                       Update
                     </Button>
                   </Link>
@@ -49,6 +44,11 @@ function Admin() {
                   >
                     Delete
                   </Button>
+                  <Link to="/admin/add">
+                   <Button variant="contained" sx={{ marginLeft: '5%',backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' }}}>
+                     Add New Medicine
+                  </Button>
+                </Link>
                 </TableCell>
               </TableRow>
             ))}

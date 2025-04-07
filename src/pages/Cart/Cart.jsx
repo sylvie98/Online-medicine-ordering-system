@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Container,Typography,Grid,Card,CardContent,CardMedia,IconButton,Button,Box} from "@mui/material";
+import { Container, Typography, Grid, Card, CardContent, CardMedia, IconButton, Button, Box } from "@mui/material";
 import { Add, Remove, Delete } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
@@ -47,7 +47,7 @@ function Cart() {
   };
 
   return (
-    <Container sx={{ pt: 10 ,marginBottom:'15%'}}>
+    <Container sx={{ pt: 10 ,marginBottom:'17%'}}>
       <Typography variant="h4" gutterBottom>
         Your Cart
       </Typography>
