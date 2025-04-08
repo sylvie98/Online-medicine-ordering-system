@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Typography, Grid, Card, CardContent, CardMedia, IconButton, Button, Box } from "@mui/material";
 import { Add, Remove, Delete } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import NavClient from "../../Component/NavClient";
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -47,6 +48,8 @@ function Cart() {
   };
 
   return (
+    <>
+    <NavClient/>
     <Container sx={{ pt: 10 ,marginBottom:'17%'}}>
       <Typography variant="h4" gutterBottom>
         Your Cart
@@ -108,6 +111,7 @@ function Cart() {
         </Grid>
       )}
     </Container>
+    </>
   );
 }
 

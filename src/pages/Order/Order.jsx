@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Typography, TextField, Button, Box, Grid, Card, CardMedia, CardContent } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import NavClient from '../../Component/NavClient';
 
 function Order() {
   const [cart, setCart] = useState([]);
@@ -58,6 +59,8 @@ function Order() {
   };
 
   return (
+    <>
+    <NavClient/>
     <Container sx={{ pt: 10 }}>
       <Typography variant="h4" gutterBottom>
         Complete Your Order
@@ -119,6 +122,7 @@ function Order() {
         </Button>
       </Box>
     </Container>
+    </>
   );
 }
 

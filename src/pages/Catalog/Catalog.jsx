@@ -2,6 +2,7 @@
 import React from "react";
 import {Container,Grid,Card,CardContent,CardMedia,Typography,Button} from "@mui/material";
 import { Link} from 'react-router-dom';
+import NavClient from "../../Component/NavClient";
 
 const medicines = [
   { id: 1, name: "Allergan", price: 5000, image: "/Allergan.jpg" },
@@ -32,6 +33,8 @@ function Catalog() {
   };
 
   return (
+    <>
+    <NavClient/>
     <Container sx={{ paddingTop: 10 }}>
       <Typography variant="h4" sx={{ marginBottom: 3 }}>
         Medicine Catalog
@@ -59,6 +62,7 @@ function Catalog() {
         ))}
       </Grid>
     </Container>
+    </>
   );
 }
 
