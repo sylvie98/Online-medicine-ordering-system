@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import DrawerClient from './DrawerClient';
 import AccountMenu from './AccountMenu';
 const PAGES=[
-//   { name: "Catalog", path: "/catalog" },
-//   {name:"Cart", path:"/cart"},
-//   {name:"Order", path:"/order"},
+  { name: "Catalog", path: "/catalog" },
+  {name:"Cart", path:"/cart"},
+  {name:"Order", path:"/order"},
 ];
 const NavClient = () => {
   const [value, setValue]=useState();
@@ -39,7 +39,6 @@ const NavClient = () => {
                   }
             </Tabs>
             <AccountMenu/>
-            {/* <Button sx={{marginLeft:"auto",background:"white",color:'#063970','&:hover': { backgroundColor: '#e74c3c ' }}} variant='contained' component={Link} to="/login">Logout</Button> */}
                 </>
               )
             }

@@ -41,8 +41,8 @@ const Navabar = () => {
                     ))
                   }
             </Tabs>
-            <Button sx={{marginLeft:"auto",background:"white",color:'#063970','&:hover': { backgroundColor: '#e74c3c ' }}} variant='contained' component={Link} to="/login">Login</Button>
-            <Button sx={{marginLeft:"15px",background:"white",color:'#063970','&:hover': { backgroundColor: '#e74c3c ' }}} variant="contained" component={Link} to="/register">Register</Button>
+            <Button sx={{marginLeft:"auto",background:"white",color:'#063970','&:hover': { backgroundColor: '#05599d ',color:'white' }}} variant='contained' component={Link} to="/login">Login</Button>
+            <Button sx={{marginLeft:"15px",background:"white",color:'#063970','&:hover': { backgroundColor: '#05599d ' ,color:'white'}}} variant="contained" component={Link} to="/register">Register</Button>
                 </>
               )
             }
