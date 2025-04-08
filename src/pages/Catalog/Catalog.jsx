@@ -1,7 +1,6 @@
-// catalog/Catalog.jsx
-import React from "react";
-import {Container,Grid,Card,CardContent,CardMedia,Typography,Button} from "@mui/material";
-import { Link} from 'react-router-dom';
+import React, { useState } from "react";
+import { Container, Grid, Card, CardContent, CardMedia, Typography, Button, TextField } from "@mui/material";
+import { Link } from 'react-router-dom';
 import NavClient from "../../Component/NavClient";
 
 const medicines = [
@@ -18,6 +17,13 @@ const medicines = [
 ];
 
 function Catalog() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Filter the medicines based on search query
+  const filteredMedicines = medicines.filter((med) =>
+    med.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const handleAddToCart = (medicine) => {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
     const existingItemIndex = existingCart.findIndex((item) => item.id === medicine.id);
@@ -34,34 +40,51 @@ function Catalog() {
 
   return (
     <>
-    <NavClient/>
-    <Container sx={{ paddingTop: 10 }}>
-      <Typography variant="h4" sx={{ marginBottom: 3 }}>
-        Medicine Catalog
-      </Typography>
-      <Grid container spacing={3}>
-        {medicines.map((med) => (
-          <Grid item xs={12} sm={6} md={4} key={med.id}>
-            <Card>
-              <CardMedia component="img" height="140" image={med.image} alt={med.name} />
-              <CardContent>
-                <Typography variant="h6">{med.name}</Typography>
-                <Typography variant="body1">{med.price} Frw</Typography>
-                <Link to={"/cart"}>
-                <Button
-                  variant="contained"
-                  onClick={() => handleAddToCart(med)}
-                  sx={{ mt: 1,backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' }  }}
-                >
-                  Add to Cart
-                </Button>
-                </Link>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+      <NavClient />
+      <Container sx={{ paddingTop: 10 }}>
+        <Typography variant="h4" sx={{ marginBottom: 3 }}>
+          Medicine Catalog
+        </Typography>
+        
+        {/* Search Bar */}
+        <TextField
+          variant="outlined"
+          label="Search Medicines"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          fullWidth
+          sx={{ marginBottom: 3 ,width:'30%'}}
+        />
+
+        <Grid container spacing={3}>
+          {filteredMedicines.length > 0 ? (
+            filteredMedicines.map((med) => (
+              <Grid item xs={12} sm={6} md={4} key={med.id}>
+                <Card>
+                  <CardMedia component="img" height="140" image={med.image} alt={med.name} />
+                  <CardContent>
+                    <Typography variant="h6">{med.name}</Typography>
+                    <Typography variant="body1">{med.price} Frw</Typography>
+                    <Link to={"/cart"}>
+                      <Button
+                        variant="contained"
+                        onClick={() => handleAddToCart(med)}
+                        sx={{ mt: 1, backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' } }}
+                      >
+                        Add to Cart
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))
+          ) : (
+            <Typography variant="h6" color="error">
+              No medicines found.
+            </Typography>
+          )}
+        </Grid>
+      </Container>
     </>
   );
 }

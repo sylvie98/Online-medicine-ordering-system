@@ -1,18 +1,11 @@
 import React, { useContext } from 'react';
 import { MedicineContext } from './MedicineContext';
 import { useParams } from 'react-router-dom';
-import {
-  Button,
-  Typography,
-  Card,
-  CardContent,
-  CardActions,
-  Box
-} from '@mui/material';
+import {Button,Typography,Card,CardContent,CardActions,Box} from '@mui/material';
 
 function View() {
-  const { id } = useParams(); // Extract 'id' from URL
-  const { medicines } = useContext(MedicineContext); // Get medicines from context
+  const { id } = useParams(); 
+  const { medicines } = useContext(MedicineContext); 
 
   // Find the medicine with the specific ID
   const medicine = medicines.find((med) => med.id === parseInt(id));
@@ -54,7 +47,10 @@ function View() {
            Name: {medicine.name}
           </Typography>
           <Typography variant="h6" gutterBottom>
-            Price: {medicine.price}
+            Price: {medicine.price}Frw
+          </Typography>
+          <Typography variant="h5" gutterBottom>
+            image:<img src={medicine.image} alt={medicine.name} style={{ width: '70px', height: '70px', objectFit: 'cover' }}/>
           </Typography>
         </CardContent>
         <CardActions sx={{ justifyContent: 'center' }}>
