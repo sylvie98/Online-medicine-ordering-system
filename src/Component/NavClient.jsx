@@ -4,6 +4,7 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import { Link } from "react-router-dom";
 import DrawerClient from './DrawerClient';
 import AccountMenu from './AccountMenu';
+import DarkModeToggle from './DarkModeToggle';
 const PAGES=[
   { name: "Catalog", path: "/catalog" },
   {name:"Cart", path:"/cart"},
@@ -38,6 +39,7 @@ const NavClient = () => {
                     ))
                   }
             </Tabs>
+            <DarkModeToggle/>
             <AccountMenu/>
                 </>
               )

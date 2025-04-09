@@ -38,7 +38,7 @@ const OrderTrends = () => {
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={orderData}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
+          {/* <XAxis dataKey="date" /> */}
           <YAxis />
           <Tooltip />
           <Legend />

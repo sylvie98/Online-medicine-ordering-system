@@ -4,6 +4,7 @@ import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import { Link } from "react-router-dom";
 import DrawerAdmin from './DrawerAdmin';
 import AccountMenu from './AccountMenu';
+import DarkModeToggle from './DarkModeToggle';
 
 
 const PAGES=[
@@ -38,6 +39,7 @@ const NavAdmin = () => {
                     ))
                   }
             </Tabs>
+            <DarkModeToggle/>
             <AccountMenu />
             {/* <AccountCircleIcon/>
             <Button sx={{marginLeft:"auto",background:"white",color:'#063970','&:hover': { backgroundColor: '#e74c3c ' }}} variant='contained' component={Link} to="/login">Logout</Button> */}

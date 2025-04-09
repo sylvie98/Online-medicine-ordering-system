@@ -4,10 +4,9 @@ import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 const PAGES=[
-//   { name: "Home", path: "/" },
-//   { name: "Medicine", path: "/medicine" },
-//   { name: "About", path: "/about" },
-//   { name: "Contact Us", path: "/contact" },
+  { name: "Medicine", path: "/admin" },
+  { name: "Clients", path: "/admin/clients" },
+  { name: "popularMedicine", path: "/admin/popularMedicine" },
   { name: "Logout", path: "/login" },
 //   { name: "Register", path: "/register" },
   // { name: "Catalog", path: "/catalog" },

@@ -3,6 +3,7 @@ import { AppBar,Button,Tab,Tabs,Toolbar,Typography,useTheme,useMediaQuery} from 
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import { Link } from "react-router-dom";
 import DrawerComp from './DrawerComp';
+import DarkModeToggle from './DarkModeToggle';
 const PAGES=[
   { name: "Home", path: "/" },
   { name: "Medicine", path: "/medicine" },
@@ -41,6 +42,7 @@ const Navabar = () => {
                     ))
                   }
             </Tabs>
+            <DarkModeToggle/>
             <Button sx={{marginLeft:"auto",background:"white",color:'#063970','&:hover': { backgroundColor: '#05599d ',color:'white' }}} variant='contained' component={Link} to="/login">Login</Button>
             <Button sx={{marginLeft:"15px",background:"white",color:'#063970','&:hover': { backgroundColor: '#05599d ' ,color:'white'}}} variant="contained" component={Link} to="/register">Register</Button>
                 </>

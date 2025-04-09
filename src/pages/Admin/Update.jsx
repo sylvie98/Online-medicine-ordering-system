@@ -12,32 +12,45 @@ function Update() {
 
   const [name, setName] = useState(medicine?.name || '');
   const [price, setPrice] = useState(medicine?.price || '');
-  const [image, setImage] = useState(medicine?.image || '');  
-  const [imagePreview, setImagePreview] = useState(medicine?.image || '');  
+  const [image, setImage] = useState(medicine?.image || '');
+  const [imagePreview, setImagePreview] = useState(medicine?.image || '');
 
   useEffect(() => {
     if (medicine) {
       setName(medicine.name);
       setPrice(medicine.price);
       setImage(medicine.image);
-      setImagePreview(medicine.image);  
+      setImagePreview(medicine.image);
     }
   }, [medicine]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setImage(file);  
-      setImagePreview(URL.createObjectURL(file));  
+      const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+      if (!validImageTypes.includes(file.type)) {
+        alert('Invalid file type. Please upload an image (jpg, png, gif, or webp).');
+        return;
+      }
+      setImage(file);
+      setImagePreview(URL.createObjectURL(file));
     }
   };
 
   const handleSubmit = () => {
-    if (name && price) {
-      const updatedMedicine = { name, price, image: imagePreview };
-      updateMedicine(id, updatedMedicine);  
-      navigate('/admin');  
+    if (!name || !price) {
+      alert('Please fill in both name and price.');
+      return;
     }
+
+    const updatedMedicine = {
+      name,
+      price,
+      image: typeof image === 'string' ? image : imagePreview, // keep old image or use new one
+    };
+
+    updateMedicine(id, updatedMedicine);
+    navigate('/admin');
   };
 
   if (!medicine) return <Typography variant="h6">Medicine not found!</Typography>;
@@ -47,50 +60,69 @@ function Update() {
       <Typography variant="h4" gutterBottom>
         Update Medicine
       </Typography>
+
       <TextField
         label="Medicine Name"
         fullWidth
         margin="normal"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        required
       />
+
       <TextField
         label="Price"
         fullWidth
         margin="normal"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
+        required
       />
 
-      {/* Image upload input */}
+      {/* Image Upload */}
       <Box sx={{ marginBottom: 2 }}>
         <input
           type="file"
           accept="image/*"
-          onChange={handleImageChange}  
+          onChange={handleImageChange}
           style={{ display: 'none' }}
           id="image-upload"
         />
         <label htmlFor="image-upload">
-          <Button variant="contained" component="span" sx={{ backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' } }}>
+          <Button
+            variant="contained"
+            component="span"
+            sx={{
+              backgroundColor: '#063970',
+              '&:hover': { backgroundColor: '#05599d' },
+            }}
+          >
             Change Image
           </Button>
         </label>
-        {image && !imagePreview.includes('http') && (
-          <Typography variant="body2" sx={{ marginTop: 1 }}>{image.name}</Typography>  
+        {image && typeof image !== 'string' && (
+          <Typography variant="body2" sx={{ marginTop: 1 }}>
+            {image.name}
+          </Typography>
         )}
       </Box>
 
-      {/* Image preview */}
-      <Box sx={{ marginBottom: 2 }}>
-        {imagePreview && (
+      {/* Image Preview */}
+      {imagePreview && (
+        <Box sx={{ marginBottom: 2 }}>
           <img
             src={imagePreview}
-            alt="Image Preview"
-            style={{ width: '100%', maxHeight: '300px', objectFit: 'contain' }}
+            alt="Preview"
+            style={{
+              width: '100%',
+              maxHeight: '300px',
+              objectFit: 'contain',
+              border: '1px solid #ccc',
+              borderRadius: '8px',
+            }}
           />
-        )}
-      </Box>
+        </Box>
+      )}
 
       <Button
         variant="contained"

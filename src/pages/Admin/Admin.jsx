@@ -79,7 +79,7 @@ function Admin() {
   // Confirm delete
   const handleConfirmDelete = () => {
     deleteMedicine(medicineToDelete);
-    handleCloseDialog(); // Close dialog after confirming deletion
+    handleCloseDialog(); 
   };
 
   return (
@@ -93,6 +93,11 @@ function Admin() {
         fullWidth
         sx={{ marginBottom: 3, marginLeft: '20%', width: '30%' }}
       />
+       <Link to="/admin/add">
+          <Button variant="contained" sx={{ marginLeft: '5%', backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' } }}>
+              Add New Medicine
+          </Button>
+        </Link>
       <TableContainer component={Paper} style={{ marginLeft: '20%', width: '75%' }}>
         <Table>
           <TableHead>
@@ -157,11 +162,7 @@ function Admin() {
                   >
                     Delete
                   </Button>
-                  <Link to="/admin/add">
-                    <Button variant="contained" sx={{ marginLeft: '5%', backgroundColor: '#063970', '&:hover': { backgroundColor: '#05599d' } }}>
-                      Add 
-                    </Button>
-                  </Link>
+                 
                 </TableCell>
               </TableRow>
             ))}
